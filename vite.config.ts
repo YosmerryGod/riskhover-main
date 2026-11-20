@@ -14,10 +14,10 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['riskrover-icon.svg', 'riskrover-mark.svg'],
       manifest: {
-        name: 'RiskRover — Bukti sebelum kesimpulan',
+        name: 'RiskRover — Evidence before conclusions',
         short_name: 'RiskRover',
-        description: 'Alat riset memecoin berbasis bukti.',
-        lang: 'id',
+        description: 'Evidence-based memecoin research.',
+        lang: 'en',
         start_url: './',
         scope: './',
         display: 'standalone',

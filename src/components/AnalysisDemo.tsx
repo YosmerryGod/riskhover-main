@@ -1,16 +1,16 @@
 import { useEffect, useRef, useState } from 'react'
 
 const steps = [
-  { title: 'Permission kontrak', detail: 'Mint, freeze, dan akses khusus' },
-  { title: 'Distribusi holder', detail: 'Konsentrasi dan keterkaitan alamat' },
-  { title: 'Aktivitas wallet', detail: 'Deployer dan pergerakan yang terkait' },
+  { title: 'Contract permissions', detail: 'Mint, freeze, and privileged access' },
+  { title: 'Holder distribution', detail: 'Concentration and linked addresses' },
+  { title: 'Wallet activity', detail: 'Deployer and related movements' },
 ]
 
 const findings = [
-  { label: 'Izin kontrak', value: 'Perlu tinjauan', evidence: 'Mint authority masih aktif' },
-  { label: 'Konsentrasi holder', value: 'Risiko tinggi', evidence: '10 alamat teratas memegang 64%' },
-  { label: 'Likuiditas', value: 'Perlu tinjauan', evidence: 'Masa lock tersisa 2 hari' },
-  { label: 'Aktivitas deployer', value: 'Terdeteksi', evidence: '3 wallet menunjukkan keterkaitan' },
+  { label: 'Contract permissions', value: 'Review needed', evidence: 'Mint authority is still active' },
+  { label: 'Holder concentration', value: 'High risk', evidence: 'Top 10 addresses hold 64%' },
+  { label: 'Liquidity', value: 'Review needed', evidence: 'Only 2 days remain on the lock' },
+  { label: 'Deployer activity', value: 'Detected', evidence: '3 wallets show links' },
 ]
 
 export default function AnalysisDemo() {
@@ -40,13 +40,13 @@ export default function AnalysisDemo() {
   }
 
   return (
-    <div className="demo-shell" aria-label="Simulasi analisis RiskRover">
+    <div className="demo-shell" aria-label="RiskRover analysis simulation">
       <div className="demo-topline">
         <div>
-          <p className="demo-product">Laporan token contoh</p>
-          <p className="demo-network">Simulasi untuk BNB Chain</p>
+          <p className="demo-product">Sample token report</p>
+          <p className="demo-network">BNB Chain simulation</p>
         </div>
-        <span className="demo-fiction">Data fiktif</span>
+        <span className="demo-fiction">Fictional data</span>
       </div>
 
       <div className="demo-progress" aria-hidden="true">
@@ -59,7 +59,7 @@ export default function AnalysisDemo() {
       <div className="demo-body">
         <div className="demo-steps">
           {steps.map((step, index) => {
-            const status = phase > index ? 'Selesai' : phase === index ? 'Memeriksa' : 'Menunggu'
+            const status = phase > index ? 'Complete' : phase === index ? 'Checking' : 'Queued'
             return (
               <div className={`demo-step ${phase >= index ? 'is-active' : ''}`} key={step.title}>
                 <div>
@@ -75,21 +75,21 @@ export default function AnalysisDemo() {
         <div className="demo-report" aria-live="polite">
           {running ? (
             <div className="demo-working">
-              <p className="demo-working__label">Sedang membaca bukti</p>
+              <p className="demo-working__label">Reviewing evidence</p>
               <p className="demo-working__step">{steps[phase].title}</p>
-              <p className="demo-working__note">Tahap {phase + 1} dari 3. Tidak ada token nyata yang sedang dianalisis.</p>
+              <p className="demo-working__note">Step {phase + 1} of 3. No real token is being analyzed.</p>
             </div>
           ) : (
             <>
               <div className="demo-verdict">
                 <div>
-                  <p>Kesimpulan simulasi</p>
-                  <h3>Perlu pemeriksaan lanjutan</h3>
+                  <p>Simulation conclusion</p>
+                  <h3>Further review needed</h3>
                 </div>
-                <span>Risiko tinggi</span>
+                <span>High risk</span>
               </div>
               <table>
-                <caption>Temuan pada data token fiktif</caption>
+                <caption>Findings for a fictional token</caption>
                 <tbody>
                   {findings.map((finding) => (
                     <tr key={finding.label}>
@@ -108,9 +108,9 @@ export default function AnalysisDemo() {
       </div>
 
       <div className="demo-footer">
-        <p>Ini simulasi antarmuka, bukan analisis on-chain langsung atau rekomendasi beli.</p>
+        <p>This is an interface simulation, not live on-chain analysis or a buy recommendation.</p>
         <button className="button button--signal" type="button" onClick={runDemo} disabled={running}>
-          {running ? 'Memeriksa data contoh' : phase === 3 ? 'Putar ulang simulasi' : 'Putar simulasi'}
+          {running ? 'Running sample analysis' : phase === 3 ? 'Replay simulation' : 'Run simulation'}
         </button>
       </div>
     </div>
