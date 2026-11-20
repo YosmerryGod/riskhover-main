@@ -292,58 +292,59 @@ h3 {
   width: min(100%, 650px);
   justify-self: end;
   aspect-ratio: 11 / 9;
-  transform: perspective(1100px) rotateX(3deg) rotateY(-12deg) scale(1);
-  transform-style: preserve-3d;
-  transition: transform 260ms cubic-bezier(0.2, 0.7, 0.2, 1);
-  will-change: transform;
 }
 
-.hero-visual img {
+.hound-webgl {
+  position: absolute;
+  inset: 0;
+  isolation: isolate;
+  user-select: none;
+  touch-action: pan-y;
+}
+
+.hound-webgl canvas,
+.hound-fallback {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-}
-
-.hound-scene,
-.hound-extrusion {
-  position: absolute;
-  inset: 0;
-  transform-style: preserve-3d;
-}
-
-.hound-scene {
-  user-select: none;
-}
-
-.hound-layer,
-.hound-face {
-  position: absolute;
-  inset: 0;
+  display: block;
   pointer-events: none;
 }
 
-.hound-layer {
-  filter: brightness(0.38) saturate(0.8);
-  opacity: 0.96;
+.hound-webgl canvas {
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 320ms ease;
 }
 
-.hound-face {
-  transform: translateZ(24px);
+.hound-webgl.is-ready canvas {
+  opacity: 1;
+}
+
+.hound-fallback {
+  z-index: 1;
+  object-fit: contain;
+  opacity: 1;
   filter: drop-shadow(18px 25px 20px rgb(0 0 0 / 0.22));
+  transition: opacity 180ms ease;
+}
+
+.hound-webgl.is-ready .hound-fallback {
+  opacity: 0;
 }
 
 .hound-shadow {
   position: absolute;
-  z-index: -1;
+  z-index: 0;
   left: 20%;
-  bottom: 1%;
+  bottom: 7%;
   width: 64%;
-  height: 13%;
+  height: 11%;
   border-radius: 50%;
-  background: rgb(0 0 0 / 0.42);
-  filter: blur(22px);
-  transform: translateZ(-120px) rotateX(76deg);
-  transform-origin: center;
+  background: rgb(0 0 0 / 0.38);
+  filter: blur(24px);
+  pointer-events: none;
 }
 
 .hero-support {

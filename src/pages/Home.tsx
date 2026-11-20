@@ -1,5 +1,5 @@
-import { useRef } from 'react'
 import AnalysisDemo from '../components/AnalysisDemo'
+import HoundScene from '../components/HoundScene'
 
 const checks = [
   {
@@ -24,27 +24,7 @@ const checks = [
   },
 ]
 
-const depthLayers = [8, 7, 6, 5, 4, 3, 2, 1]
-
 export default function Home() {
-  const visualRef = useRef<HTMLDivElement>(null)
-
-  function moveMark(event: React.PointerEvent<HTMLDivElement>) {
-    if (event.pointerType === 'touch' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    const node = visualRef.current
-    if (!node) return
-    const rect = node.getBoundingClientRect()
-    const x = (event.clientX - rect.left) / rect.width - 0.5
-    const y = (event.clientY - rect.top) / rect.height - 0.5
-    node.style.transform = `perspective(1100px) rotateX(${3 - y * 12}deg) rotateY(${-12 + x * 18}deg) scale(1.025)`
-  }
-
-  function resetMark() {
-    if (visualRef.current) {
-      visualRef.current.style.transform = 'perspective(1100px) rotateX(3deg) rotateY(-12deg) scale(1)'
-    }
-  }
-
   return (
     <>
       <a className="skip-link" href="#main">Skip to content</a>
@@ -70,31 +50,8 @@ export default function Home() {
             <div className="hero-copy">
               <h1 id="hero-title"><span>Don’t guess</span><span>the token.</span></h1>
             </div>
-            <div
-              className="hero-visual"
-              ref={visualRef}
-              onPointerMove={moveMark}
-              onPointerLeave={resetMark}
-            >
-              <div className="hound-scene">
-                <span className="hound-shadow" aria-hidden="true" />
-                <div className="hound-extrusion" aria-hidden="true">
-                  {depthLayers.map((depth) => (
-                    <img
-                      className="hound-layer"
-                      src="/riskrover-hound-depth.svg"
-                      alt=""
-                      key={depth}
-                      style={{ transform: `translate3d(${depth * 2.4}px, ${depth * 2.8}px, ${-depth * 10}px)` }}
-                    />
-                  ))}
-                </div>
-                <img
-                  className="hound-face"
-                  src="/riskrover-hound.svg"
-                  alt="RiskRover’s lime-green hound mascot with dark ears, bright eyes, and a radar nose"
-                />
-              </div>
+            <div className="hero-visual">
+              <HoundScene />
             </div>
             <div className="hero-support">
               <p>RiskRover turns contract permissions, holder distribution, and wallet activity into a risk report you can trace back to the evidence.</p>
