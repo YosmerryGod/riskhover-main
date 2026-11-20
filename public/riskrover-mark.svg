@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" role="img" aria-labelledby="title desc">
+  <title id="title">RiskRover hound radar</title>
+  <desc id="desc">Geometric hound head with a dropped ear, diamond eye, and radar nose.</desc>
+  <g transform="translate(-30 35)">
+    <path fill="#C8FF4D" d="M170 260 L270 135 L500 155 L650 245 L710 370 L865 430 L930 500 L885 585 L740 610 L690 720 L565 825 L325 845 L205 745 L235 610 L150 470 Z"/>
+    <path fill="#0B1020" d="M275 235 L475 260 L450 440 L340 625 L205 555 L235 390 Z"/>
+    <path fill="#0B1020" d="M580 325 L620 350 L580 375 L540 350 Z"/>
+    <circle cx="855" cy="505" r="80" fill="#0B1020"/>
+    <circle cx="855" cy="505" r="26" fill="#C8FF4D"/>
+  </g>
+</svg>
